@@ -17,7 +17,7 @@ export default function Contact() {
     setLoading(true);
     setStatus(null);
     try {
-      await axios.post('/api/messages', form);
+      await axios.post('https://portfolio-7tlk.vercel.app/api/messages', form);
       setStatus({ type: 'success', msg: "Message sent! I'll get back to you soon." });
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch {

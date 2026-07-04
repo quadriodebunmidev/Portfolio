@@ -29,8 +29,8 @@ export default function AdminDashboard() {
 
   const fetchAll = async () => {
     const [p,s,e,cert,test,m] = await Promise.allSettled([
-      axios.get('/api/projects'), axios.get('/api/skills'), axios.get('/api/experience'),
-      axios.get('/api/certificates'), axios.get('/api/testimonials'), axios.get('/api/messages')
+      axios.get('https://portfolio-7tlk.vercel.app/api/projects'), axios.get('https://portfolio-7tlk.vercel.app/api/skills'), axios.get('https://portfolio-7tlk.vercel.app/api/experience'),
+      axios.get('https://portfolio-7tlk.vercel.app/api/certificates'), axios.get('https://portfolio-7tlk.vercel.app/api/testimonials'), axios.get('https://portfolio-7tlk.vercel.app/api/messages')
     ]);
     setData({
       projects:     p.status==='fulfilled'    ? p.value.data    : [],
@@ -74,7 +74,7 @@ export default function AdminDashboard() {
       if (modal==='experience' && typeof payload.achievements==='string') payload.achievements = payload.achievements.split('\n').filter(Boolean);
       if (modal==='experience' && typeof payload.techUsed==='string')    payload.techUsed    = payload.techUsed.split(',').map(t=>t.trim()).filter(Boolean);
 
-      const ep = { projects:'/api/projects', skills:'/api/skills', experience:'/api/experience', certificates:'/api/certificates', testimonials:'/api/testimonials' };
+      const ep = { projects:'https://portfolio-7tlk.vercel.app/api/projects', skills:'https://portfolio-7tlk.vercel.app/api/skills', experience:'https://portfolio-7tlk.vercel.app/api/experience', certificates:'https://portfolio-7tlk.vercel.app/api/certificates', testimonials:'https://portfolio-7tlk.vercel.app/api/testimonials' };
       const url = ep[modal];
       if (payload._id) await axios.put(`${url}/${payload._id}`, payload);
       else             await axios.post(url, payload);
@@ -87,18 +87,18 @@ export default function AdminDashboard() {
 
   const handleDelete = async (type, id) => {
     if (!window.confirm('Delete this item?')) return;
-    const ep = { projects:'/api/projects', skills:'/api/skills', experience:'/api/experience', certificates:'/api/certificates', testimonials:'/api/testimonials', messages:'/api/messages' };
+    const ep = { projects:'https://portfolio-7tlk.vercel.app/api/projects', skills:'https://portfolio-7tlk.vercel.app/api/skills', experience:'https://portfolio-7tlk.vercel.app/api/experience', certificates:'https://portfolio-7tlk.vercel.app/api/certificates', testimonials:'https://portfolio-7tlk.vercel.app/api/testimonials', messages:'https://portfolio-7tlk.vercel.app/api/messages' };
     try { await axios.delete(`${ep[type]}/${id}`); await fetchAll(); showToast('Deleted.'); }
     catch { showToast('Delete failed', 'error'); }
   };
 
   const handleMarkRead = async (id) => {
-    try { await axios.patch(`/api/messages/${id}/read`); await fetchAll(); } catch {}
+    try { await axios.patch(`https://portfolio-7tlk.vercel.app/api/messages/${id}/read`); await fetchAll(); } catch {}
   };
 
   const handleSeed = async () => {
     if (!window.confirm('Reset all data with sample content?')) return;
-    try { await axios.post('/api/seed'); await fetchAll(); showToast('Database seeded!'); }
+    try { await axios.post('https://portfolio-7tlk.vercel.app/api/seed'); await fetchAll(); showToast('Database seeded!'); }
     catch { showToast('Seed failed', 'error'); }
   };
 

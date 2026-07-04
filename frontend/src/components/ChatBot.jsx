@@ -27,7 +27,7 @@ export default function ChatBot() {
     setInput('');
     setLoading(true);
     try {
-      const { data } = await axios.post('/api/chat', { message: input, history });
+      const { data } = await axios.post('https://portfolio-7tlk.vercel.app/api/chat', { message: input, history });
       setMessages(prev => [...prev, { role: 'assistant', content: data.reply }]);
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: 'Chat service unavailable. Please ensure GROQ_API_KEY is set in backend .env.' }]);

@@ -9,9 +9,11 @@ export default function Testimonials() {
   const timerRef = useRef(null);
 
   useEffect(() => {
-    axios.get('/api/testimonials').then(r =>{
+    axios.get('https://portfolio-7tlk.vercel.app/api/testimonials').then(r =>{
        setTestimonials(r.data)
-      
+      console.log(r.data)
+      console.log(Array.isArray(r.data));
+console.log(typeof r.data);
       }
       ).catch(() => {});
   }, []);
@@ -51,7 +53,7 @@ export default function Testimonials() {
                 <div style={{ fontFamily: 'Space Mono', fontSize: '0.72rem', color: 'var(--text-muted)' }}>{t?.role}{t?.company ? `, ${t?.company}` : ''}</div>
               </div>
               <div style={{ display: 'flex', gap: '2px', marginTop: '4px' }}>
-                {Array.from({ length: t?.rating || 5 }).map((_, i) => <span key={i} style={{ color: '#fbbf24', fontSize: '0.9rem' }}>★</span>)}
+                {Array.from({ length: t?.rating || 5 })?.map((_, i) => <span key={i} style={{ color: '#fbbf24', fontSize: '0.9rem' }}>★</span>)}
               </div>
             </div>
           </div>

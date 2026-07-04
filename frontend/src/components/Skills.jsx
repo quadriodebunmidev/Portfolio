@@ -15,7 +15,7 @@ export default function Skills() {
   const filterRef = useScrollReveal();
 
   useEffect(() => {
-    axios.get('/api/skills').then(r =>{
+    axios.get('https://portfolio-7tlk.vercel.app/api/skills').then(r =>{
       setSkills(r.data)
       setLoading(false)
   }).catch(() => {setLoading(false)});

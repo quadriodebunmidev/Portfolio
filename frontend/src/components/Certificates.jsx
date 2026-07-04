@@ -7,7 +7,7 @@ export default function Certificates() {
   const headRef = useScrollReveal();
 
   useEffect(() => {
-    axios.get('/api/certificates').then(r =>{ 
+    axios.get('https://portfolio-7tlk.vercel.app/api/certificates').then(r =>{ 
       setCerts(r.data)
     
   }).catch(() => {});

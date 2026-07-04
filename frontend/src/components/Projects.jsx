@@ -23,7 +23,7 @@ export default function Projects() {
   const headRef = useScrollReveal();
 
   useEffect(() => {
-    axios.get('/api/projects').then(r => {
+    axios.get('https://portfolio-7tlk.vercel.app/api/projects').then(r => {
       setLoading(false)
       setProjects(r.data)
 

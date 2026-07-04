@@ -11,7 +11,7 @@ export default function Experience() {
 
   useEffect(() => {   
   axios
-    .get('/api/experience')
+    .get('https://portfolio-7tlk.vercel.app/api/experience')
     .then((r) => {
       console.log(r.data)
      setExperiences(r.data) 

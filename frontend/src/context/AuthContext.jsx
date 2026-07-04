@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.get('/api/auth/verify')
+      axios.get('https://portfolio-7tlk.vercel.app/api/auth/verify')
         .then(() => setIsAdmin(true))
         .catch(() => { setToken(null); localStorage.removeItem('finesse_token'); })
         .finally(() => setLoading(false));
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   const login = async (username, password) => {
-    const { data } = await axios.post('/api/auth/login', { username, password });
+    const { data } = await axios.post('https://portfolio-7tlk.vercel.app/api/auth/login', { username, password });
     setToken(data.token);
     setIsAdmin(true);
     localStorage.setItem('finesse_token', data.token);

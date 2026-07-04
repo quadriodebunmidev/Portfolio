@@ -6,7 +6,7 @@ export default function About() {
   const rightRef = useScrollReveal();
 
   return (
-    <section id="about" style={{ padding: 'clamp(4rem,8vw,8rem) clamp(1.25rem,6vw,6vw)', background: 'var(--bg)' }}>
+    <section id="about" style={{ padding: 'clamp(4rem,8vw,8rem) clamp(1.25rem,6vw,6vw)', background: 'var(--bg)', overflowX:"hidden" }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div ref={headRef} className="reveal">
           <p style={{ fontFamily: 'Space Mono', fontSize: '0.75rem', color: 'var(--accent)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>01 — About</p>
@@ -46,7 +46,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '120px', height: '120px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', zIndex: -1 }} />
+            <div style={{ position: 'relative', top: '-20px', right: '-20px', width: '120px', height: '120px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', zIndex: -1 }} />
           
         </div>
       </div>
