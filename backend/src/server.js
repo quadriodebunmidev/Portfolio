@@ -31,7 +31,7 @@ app.use('/api/seed', seedRoutes);
 app.use('/api/certificates', certificateRoutes);
 app.use('/api/testimonials', testimonialRoutes);
 
-app.get('/api/health', (req, res) => res.json({ status: 'FinessDev API running ✅' }));
+app.get('/', (req, res) => res.json({ status: 'FinessDev API running ✅' }));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/finesse-portfolio')
